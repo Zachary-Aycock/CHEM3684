@@ -1,5 +1,6 @@
 # Simplified Hamiltonian for package
 # Individual files from a package are not run seperately
+from distutils import config
 import numpy as np
 import networkx as nx
 import matplotlib.pyplot as plt
@@ -177,3 +178,42 @@ class IsingHamiltonian:
         HC = (EE - E * E) / (T * T)
         MS = (MM - M * M) / T
         return E, M, HC, MS
+    
+    def get_lowest_energy_config(self): # lowkey forgor to add self to the parameters
+        """Finds the bitstring configuration with the lowest energy
+        energy is derived from J list
+        
+        Parameters
+        ----------
+        Just config
+
+        Returns
+        -------
+        emin : Float
+            the energy of the lowest configuarion
+        cmin : BitString
+            the bitstring configuration with the lowest energy
+
+        """
+
+        x = [] # Store list of indices, simply a list of values to run through y
+        y = [] # Store list of energies, possible energies calculated
+        xmin = None # configuration of minimum energy configuration
+        emin = 0 # minimum of energy
+        bs = BitString(self.N)
+        cmin = BitString(self.N)
+        bs_len = len(bs)
+
+        for i in range(0, 2 ** bs_len): #for i in range of every possible bitstring variation (2^10 = 1024)
+            x.append(i)  # add the variation i
+            bs.set_int_config(i) #set the bitstring to the given interger
+
+            y.append(self.energy(bs)) # add energy of given variation 
+
+            if float(y[i]) <= emin: # if the current y value is smaller than the previous smallest y index
+                emin = float(y[i]) #set emin to the current energy configuration
+                xmin = i # set xmin to the current i loop
+
+        cmin.set_int_config(int(xmin)) # BitString config with lowest energy
+
+        return emin, cmin
