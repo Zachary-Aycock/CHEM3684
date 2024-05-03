@@ -1,8 +1,5 @@
 import numpy as np
 import networkx as nx
-import matplotlib.pyplot as plt
-import random
-import math
 
 # needed diff import format to access the functions in the package
 from .BitString import *

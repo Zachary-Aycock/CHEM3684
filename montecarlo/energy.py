@@ -1,8 +1,4 @@
-import numpy as np
 import networkx as nx
-import matplotlib.pyplot as plt
-import random
-import math
 from .BitString import *
 
 def energy(bs: BitString, G: nx.Graph):

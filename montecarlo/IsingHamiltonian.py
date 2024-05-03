@@ -1,11 +1,10 @@
 # Simplified Hamiltonian for package
 # Individual files from a package are not run seperately
-from distutils import config
+#from distutils import config
 import numpy as np
-import networkx as nx
-import matplotlib.pyplot as plt
-import random
-import math
+#import networkx as nx
+#import matplotlib.pyplot as plt
+
 
 # needed this import format to access the functions in the package
 from .BitString import *

@@ -12,9 +12,7 @@ To install montecarlo, have an environment with the following packages:
 
 * Python 3.11
 * NumPy
-* Matplotlib
 * networkx
-* math
 
 Once you have these packages installed, you can install montecarlo in the same environment using
 ::
